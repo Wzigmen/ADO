@@ -24,7 +24,7 @@ namespace Library2
 			//		"6,'Vikings',950,'2010-10-10',10"
 			//	);
 
-			//Library.InsertAuthor(7, "Gadge", "Randy");
+			Library.InsertAuthor(7, "Gadge", "Randy");
 			Console.WriteLine(Library.GetAuthorID("Bjarne Stroustrup"));
 			Library.InsertBook(7, "C++ Programming Language", 331, "1986-01-29", "Bjarne Stroustrup");
 			Library.Select("author_id,first_name,last_name", "Authors");

@@ -25,6 +25,7 @@ namespace Academy
 			connection = new SqlConnection(connectionString);
 
 			LoadStudents();
+			LoadGroups(); 
 		}
 		void LoadStudents()
 		{
@@ -49,6 +50,35 @@ namespace Academy
 					table.Rows.Add(row);
 				}
 				dataGridViewStudents.DataSource = table;
+			}
+
+			reader.Close();
+			connection.Close();
+		}
+		void LoadGroups()
+		{
+			string cmd = "SELECT * FROM Groups";
+			SqlCommand command = new SqlCommand(cmd, connection);
+
+			connection.Open();
+			SqlDataReader reader = command.ExecuteReader();
+
+			DataTable table = new DataTable();
+
+			if (reader.HasRows)
+			{
+				for (int i = 0; i < reader.FieldCount; i++)
+					table.Columns.Add(reader.GetName(i));
+				while (reader.Read())
+				{
+					DataRow row = table.NewRow();
+					for (int j = 0; j < reader.FieldCount; j++)
+					{
+						row[j] = reader[j];
+					}
+					table.Rows.Add(row);
+				}
+				dataGridViewGroups.DataSource = table;
 			}
 
 			reader.Close();
