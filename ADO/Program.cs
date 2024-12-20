@@ -74,7 +74,7 @@ namespace ADO
 			////////////////////////////////////////////////////////////////////////////
 
 			command.CommandText =
-				"SELECT first_name+' '+last_name AS 'Author', COUNT(book_id), 'Books count' " +
+				"SELECT  first_name+' '+last_name AS 'Author', COUNT(book_id) AS 'Books count' " +
 				"FROM Books JOIN Authors ON (author=author_id)" +
 				"GROUP BY first_name,last_name";
 			connection.Open();
@@ -98,16 +98,17 @@ namespace ADO
 
 			//Library.InsertAuthor(7,"Gadge", "Randy")
 			//Library.InsertAuthor(5,"Stroustrup", "Bjarne")
-			Console.WriteLine(Library.GetAuthorID("Bjarne Stroustrup"));
-			Library.InsertBook(7, "C++ Programming Language", 331, "1986-01-29", "Bjarne Stroustrup");
-			Library.Select("author_id, first_name, last_name", "Authors");
-			Library.Select
-				(
-					"book_id,book_title,publish_date,[Author] = first_name+' '+last_name",
-					"Books,Authors",
-					"author=author_id;DROP TABLE Genres",
-					32
-				);
+
+			//Console.WriteLine(Library.GetAuthorID("Bjarne Stroustrup"));
+			//Library.InsertBook(7, "C++ Programming Language", 331, "1986-01-29", "Bjarne Stroustrup");
+			//Library.Select("author_id, first_name, last_name", "Authors");
+			//Library.Select
+			//	(
+			//		"book_id,book_title,publish_date,[Author] = first_name+' '+last_name",
+			//		"Books,Authors",
+			//		"author=author_id;DROP TABLE Genres",
+			//		32
+			//	);
 		}
 	}
 }
